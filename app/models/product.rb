@@ -1,6 +1,10 @@
 class Product
   include Mongoid::Document
   field :name, type: String
-  field :description, type: String
-  field :model, type: String
+  include Mongoid::Slug
+  include Mongoid::Paperclip
+
+  has_mongoid_attached_file :image
+
+  slug :name 
 end
